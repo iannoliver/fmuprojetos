@@ -1,0 +1,15 @@
+h2 {
+  color: #15d9e0ce;
+  background-color: rgb(63, 45, 45);
+}
+
+header {
+  background-image: url(https://static.mundoeducacao.uol.com.br/mundoeducacao/2021/11/galaxia.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a {
+  color: beige;
+  font-size: x-large;
+}
