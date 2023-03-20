@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/style.css">
+    <script type="text/javascript" src="/index.js">
+    (function() {
+
+        'use strict';
+    
+       if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
+    
+           var smoothScroll = function (anchor, duration) {
+    
+               var startLocation = window.pageYOffset;
+               var endLocation = anchor.offsetTop;
+               var distance = endLocation - startLocation;
+               var increments = distance/(duration/16);
+               var stopAnimation;
+    
+               var animateScroll = function () {
+                   window.scrollBy(0, increments);
+                   stopAnimation();
+               };
+    
+               if ( increments >= 0 ) {
+
+                   stopAnimation = function () {
+                       var travelled = window.pageYOffset;
+                       if ( (travelled >= (endLocation - increments)) || ((window.innerHeight + travelled) >= document.body.offsetHeight) ) {
+                           clearInterval(runAnimation);
+                       }
+                   };
+               }
+               else {
+                   stopAnimation = function () {
+                       var travelled = window.pageYOffset;
+                       if ( travelled <= (endLocation || 0) ) {
+                           clearInterval(runAnimation);
+                       }
+                   };
+               }
+    
+               var runAnimation = setInterval(animateScroll, 16);
+          
+           };
+    
+           var scrollToggle = document.querySelectorAll('.scroll');
+    
+           [].forEach.call(scrollToggle, function (toggle) {
+    
+               toggle.addEventListener('click', function(e) {
+    
+                   e.preventDefault();
+    
+                   var dataID = toggle.getAttribute('href');
+                   var dataTarget = document.querySelector(dataID);
+                   var dataSpeed = toggle.getAttribute('data-speed');
+    
+                   if (dataTarget) {
+                       smoothScroll(dataTarget, dataSpeed || 500);
+                   }
+    
+               }, false);
+    
+           });
+    
+       }
+    
+    })();
+    
+    SmoothScroll({
+       animationTime    : 400, 
+       stepSize         : 100, 
+    
+       accelerationDelta : 50,  
+       accelerationMax   : 3,   
+    
+       keyboardSupport   : true,  
+       arrowScroll       : 50,    
+    
+       pulseAlgorithm   : true,
+       pulseScale       : 4,
+       pulseNormalize   : 1,
+    
+       touchpadSupport   : false, 
+       fixedBackground   : true, 
+       excluded          : ''    
+    });
+    
+    function onClick(element) {
+     document.getElementById("img01").src = element.src;
+     document.getElementById("modal01").style.display = "block";
+    }
+    
+    window.onscroll = function() {
+     myFunction()
+    };
+    
+    function myFunction() {
+     var navbar = document.getElementById("myNavbar");
+     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+       navbar.className = "w3-navbar" + " w3-card-2" + " w3-animate-top" + " w3-white";
+     } else {
+       navbar.className = navbar.className.replace(" w3-card-2 w3-animate-top w3-white", "");
+     }
+    }</script>
+</head>
+<body>
+    <div class="conteiner">
+        <div class="w3-top">
+            <ul class="w3-navbar" id="myNavbar">
+              <li><a href="#" class="w3-padding-large">Iann</a></li>
+              <li class="w3-hide-small w3-right">
+                <a href="#contact" class="w3-padding-large">Contato</a>
+              </li>
+              <li class="w3-hide-small w3-right">
+                <a href="#portfolio" class="w3-padding-large">Curriculo</a>
+              </li>
+              <li class="w3-hide-small w3-right">
+                <a href="#about" class="w3-padding-large">Sobre</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bgimg-1 w3-opacity w3-display-container">
+            <div class="w3-display-middle" style="white-space:nowrap;">
+              <h1 class="w3-center w3-padding-xlarge w3-black w3-xlarge w3-wide w3-animate-opacity">IANN <span class="w3-hide-small">OLIVEIRA</span></h1>
+            </div>
+          </div>
+          
+          <div class="w3-content w3-container w3-padding-64" id="about">
+            <h2 class="w3-center">SOBRE MIM</h2>
+            <p class="w3-center"><em>Futuro Fullstack</em></p>
+            <p>Sou um sonhador, que deseja apenas dar orgulho a familia e alcançar seus objetivos!! Sou um homem afortunado, e estou em busca da minha fortuna...</p>
+            
+            <div class="w3-row">
+              <div class="w3-col m6 w3-center w3-section">
+                <img src="https://dl-web.dropbox.com/account_photo/get/pid_uphoto%3AAAAAAJFXeyvxLhswEmX8zd1bUDwds8XrXp1K8JlqxWniaz-p77DMc8J6vJ7dMen0hkXa74kLAoop8sl0U72J?circle_crop=1&size=64x64&vers=1679273304118" id="profile" class="w3-circle" alt="Photo of Me">
+              </div>
+          
+              <div class="w3-col m6 w3-hide-small w3-section">
+                <p>Através de cursos, graduações e conhecimentos, me tornarei Fullstack em breve!</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bgimg-2 w3-display-container" id="portfolio">
+            <div class="w3-display-middle">
+              <span class="w3-xxlarge w3-text-light-grey w3-wide">PORTFOLIO</span>
+            </div>
+          </div>
+          
+          <div class="w3-content w3-container w3-padding-64">
+            <h2 class="w3-center">Conhecimentos e Informações Acadêmicas</h2>
+            <p class="w3-center"><em>Aqui estão alguns dos meus conhecimentos e realizações.<br>
+          
+            <div class="w3-row-padding w3-center">
+              <div class="w3-col m3">
+                <p><strong>Conhecimentos em:</strong> HTML</p>
+              </div>
+          
+              <div class="w3-col m3">
+                <p>CSS</p>
+              </div>
+          
+              <div class="w3-col m3">
+                <p>Javascript</p>
+              </div>
+          
+              <div class="w3-col m3">
+                <p>SQL/Banco de Dados</p>
+              </div>
+
+              <div class="w3-col m3">
+                <p>Phyton</p>
+              </div>
+
+              <div class="w3-col m3">
+                <p>C/C++</p>
+              </div>
+
+              <div class="w3-col m3">
+                <p>Help Desk(Redes, Servidores e Hardwares/Softwares)</p>
+              </div>
+            </div>
+          
+            <div class="w3-row-padding w3-center w3-section">
+              <div class="w3-col m3">
+                <p><strong>Histórico Acadêmico:</strong></p>
+              </div>
+          
+              <div class="w3-col m3">
+                <p>Técnologo em ADS - Faculdades Metropolitanas Unidas(FMU)</p><br>
+                <p><strong>Inicio: </strong>2022</p> <p><strong>Término: </strong>2024</p>
+                <p>-- CURSANDO --</p>
+              </div>
+          
+              <div class="w3-col m3">
+                <br>
+                <p>Técnico em Informática Geral - SENAC</p><br>
+                <p><strong>Inicio: </strong>2022</p> <p><strong>Término: </strong>2023</p>
+                <p>-- CURSANDO --</p>
+              </div>
+          
+              <div class="w3-col m3">
+                <br>
+                <p>Fullstack Javascript - OneBitCode</p><br>
+                <p><strong>Inicio: </strong>2022</p> <p><strong>Término: </strong>2023</p>
+                <p>-- CURSANDO --</p>
+              </div>
+            </div>
+          </div>
+          
+          <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+            <span class="w3-closebtn w3-hover-red w3-text-white w3-xxxlarge w3-container w3-display-topright">×</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+              <img id="img01" style="max-width:100%">
+            </div>
+          </div>
+          
+          <div class="bgimg-3 w3-display-container" id="contact">
+            <div class="w3-display-middle">
+              <h2 class="w3-xxlarge w3-text-light-grey w3-wide">CONTATO</h2>
+            </div>
+          </div>
+          
+          <div class="w3-content w3-container w3-padding-64">
+            <h3 class="w3-center">Entre em Contato por:</h3>
+          
+            <address class="w3-row w3-padding-32 w3-section">
+              <div class="w3-col m4 w3-container">
+
+                <div id="googleMap" class="w3-round-large"></div>
+              </div>
+              <div class="w3-col m8 w3-container w3-section">
+                <div class="w3-large w3-margin-bottom">
+                  <i class="fa fa-map-marker w3-hover-text-black" style="width:30px"></i> Av Villa Ema, 831 - São Paulo<br>
+                  <i class="fa fa-phone w3-hover-text-black" style="width:30px"></i> Celular: (71)991350501<br>
+                  <i class="fa fa-envelope w3-hover-text-black" style="width:30px"> </i> Email: iannoliveira03@gmail.com<br>
+                </div>
+                <p>Me chama pra trocar ideia, ou enviar um Email!</p>
+                <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                  <div class="w3-half">
+                    <input class="w3-input w3-border w3-hover-light-grey" type="text" placeholder="Name">
+                  </div>
+                  <div class="w3-half">
+                    <input class="w3-input w3-border w3-hover-light-grey" type="text" placeholder="Email">
+                  </div>
+                </div>
+                <input class="w3-input w3-border w3-hover-light-grey" type="text" placeholder="Comment">
+                <a href="mailto:christianpecson.io@gmail.com" class="w3-btn w3-section w3-right">Enviar</a>
+              </div>
+            </address>
+          </div>
+          
+          <footer class="w3-center w3-dark-grey w3-padding-48 w3-hover-black cf">
+            <div class="w3-half">
+              <a target="_blank" href="https://github.com/iannoliver">
+                <i class="fa fa-fire fa-2x"></i>
+              </a>
+              <a target="_blank" href="https://www.linkedin.com/in/iann-oliveira-3106b11a4/">
+                <i class="fa fa-facebook fa-2x"></i>
+              </a>
+            </div>
+            <p class="w3-half">Feito com <span class="heart-icon">❤</span> por Iann Oliveira e distribuido por <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p>
+          </footer>
+    </div>
+</body>
+</html>
